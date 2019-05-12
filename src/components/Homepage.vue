@@ -6,10 +6,10 @@
         <div class="image-holder">
             <img class="image" src="@/assets/img/homepage-people.png" alt="people working">
         </div>
-        <div class="info-holder">
+        <div class="info-holder" id="aboutUs">
             <info-block class="info-holder__block" v-for="block in info" :key="block.id" :data="block"/>
         </div>
-        <div class="write-comment">
+        <div class="write-comment" id="writeComment">
             <h2 class="write-comment__title">Write<br>comment<br><div class="write-comment__rectangle"></div></h2>
             <form class="write-comment__form" method="post">
                 <input class="write-comment__form__input write-comment__form__input--thin" type="text" placeholder="Title">

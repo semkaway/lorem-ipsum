@@ -1,19 +1,60 @@
 <template>
     <header class="header">
         <div class="header__logo">
-            <img src="@/assets/img/logo.png" alt="logo" class="header__logo__image">
+            <router-link :to="{ path: '/'}">
+                <img src="@/assets/img/logo.png" alt="logo" class="header__logo__image">
+            </router-link>
         </div>
-        <div class="header__buttons">
-            <button type="button" class="header__buttons__button">about us</button>
-            <button type="button" class="header__buttons__button">write comment</button>
-            <button type="button" class="header__buttons__button">comments</button>
+        <div class="header__buttons" id="headerButtons">
+            <router-link    to="/#aboutUs"
+                            class="header__buttons__button"
+                            :class="{ 'header__buttons__button--active': buttonBool[0].bool }"
+                            @click.native="showOutline('button1')">about us</router-link>
+            <router-link    to="/#writeComment"
+                            class="header__buttons__button"
+                            :class="{ 'header__buttons__button--active': buttonBool[1].bool }"
+                            @click.native="showOutline('button2')">write comment</router-link>
+            <router-link    :to="{ path: '/comments'}"
+                            class="header__buttons__button"
+                            :class="{ 'header__buttons__button--active': buttonBool[2].bool }"
+                            @click.native="showOutline('button3')">comments</router-link>
         </div>
     </header>
 </template>
 
 <script>
     export default {
-        name: 'TheHeader'
+        name: 'TheHeader',
+        data() {
+            return {
+                buttonBool: [
+                    {
+                        name: "button1",
+                        bool: false
+                    },
+                    {
+                        name: "button2",
+                        bool: false
+                    },
+                    {
+                        name: "button3",
+                        bool: false
+                    }
+                ]
+            }
+        },
+        methods: {
+            showOutline(buttonNumber) {
+                for (let i = 0; i < this.buttonBool.length; i++) {
+                    if (this.buttonBool[i].name == buttonNumber) {
+                        console.log("yuyuy")
+                        this.buttonBool[i].bool = true
+                    } else {
+                        this.buttonBool[i].bool = false
+                    }
+                }
+            }
+        }
     }
 </script>
 
@@ -23,6 +64,9 @@
 
     .header {
         display: flex;
+        position: sticky;
+        top: 0;
+        background-color: color(primary);
 
         .header__logo {
 
@@ -43,6 +87,7 @@
             display: inline-flex;
             align-items: flex-start;
             justify-content: space-around;
+            box-sizing: border-box;
 
             .header__buttons__button {
                 border: none;
@@ -51,12 +96,18 @@
                 text-transform: uppercase;
                 font-family: 'Poppins', sans-serif;
                 font-weight: 600;
+                font-size: 0.8em;
+                text-decoration: none;
                 color: color(text-color-header);
                 cursor: pointer;
 
                 @include desktop {
                     letter-spacing: 1.6px;
                 }
+            }
+
+            .header__buttons__button--active {
+                border-top: solid 2px color(accent-yellow);
             }
 
             @include desktop {
