@@ -49,13 +49,14 @@
             flex-basis: 48%;
 
             @include desktop {
-                padding-left: 180px;
-                padding-right: 175px;
+                flex-direction: row;
             }
         }
 
         @include desktop {
             flex-direction: row;
+            padding-left: 180px;
+            padding-right: 175px;
         }
     }
 

@@ -33,16 +33,35 @@ export default new vuex.Store ({
                 })
         },
         addComment({commit}, newComment) {
-            console.log("comment: ", newComment)
-            // HTTP
-            //     .post("/comments", {created_at: Date.now(), title: newComment.title, body: newComment.body})
-            //     .then(result => {
-            //         console.log(result)
-            //     })
-            //     .catch(error => {
-            //         console.log(error)
-            //     })
+            HTTP
+                .post("/comments", {created_at: Date.now(), title: newComment.title, body: newComment.body})
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
         },
+        editComment({commit}, newComment) {
+            HTTP
+                .put("/comments/" + newComment.id, {created_at: Date.now(), title: newComment.title, body: newComment.body})
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        },
+        deleteComment({commit}, commentId) {
+            HTTP
+                .delete("/comments/" + commentId)
+                .then(result => {
+                    console.log(result)
+                })
+                .catch(error => {
+                    console.log(error)
+                })
+        }
     },
     mutations: {
         SET_COMMENTS(state, comments) {

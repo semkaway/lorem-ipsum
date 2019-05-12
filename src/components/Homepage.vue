@@ -150,7 +150,7 @@
     }
 
     .write-comment {
-        height: 29.7em;
+        height: 34em;
         color: white;
         padding: 20px;
         background-color: color(dark);
@@ -158,7 +158,7 @@
         flex-direction: column;
 
         .write-comment__title {
-            flex-basis: 42%;
+            flex-basis: 28%;
 
             .write-comment__rectangle {
                 height: 5px;
@@ -174,6 +174,7 @@
                 font-size: 3em;
                 line-height: 50px;
                 letter-spacing: 0.5px;
+                flex-basis: 42%;
             }
         }
 
@@ -237,6 +238,7 @@
             padding-left: padding(inner-left);
             padding-right: 180px;
             padding-bottom: 0;
+            height: 29.7em;
         }
     }
 
