@@ -8,8 +8,8 @@
 
 <script>
 
-import TheHeader from './components/includes/TheHeader.vue'
-import TheFooter from './components/includes/TheFooter.vue'
+import TheHeader from '@/components/includes/TheHeader'
+import TheFooter from '@/components/includes/TheFooter'
 
 export default {
   name: 'app',
@@ -21,6 +21,8 @@ export default {
 </script>
 
 <style lang="scss">
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,700');
+
     body, html {
         height: 100%;
     }
@@ -29,5 +31,6 @@ export default {
         padding-top: padding(top);
         padding-left: padding(side);
         padding-right: padding(side);
+        font-family: 'Poppins', sans-serif;
     }
 </style>

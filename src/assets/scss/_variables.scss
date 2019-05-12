@@ -1,11 +1,18 @@
 $colors: (
     primary: #FFFFFF,
-    text-color: #111518,
+    text-color-header: #111518,
+    text-color-main: #101417,
+    text-color-shaded: #4A4D5E,
     shade: #F7F7F7,
-    dark: #1D1E25
+    dark: #1D1E25,
+    darken: #4A4D5E,
+    accent-yellow: #F9D10D,
+    accent-green: #60E3A1
 );
 
 $padding: (
     top: 40px,
-    side: 68px
+    side: 4.5%,
+    inner-left: 13.4%,
+    inner-right: 16%
 );

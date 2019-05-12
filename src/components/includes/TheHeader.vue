@@ -19,26 +19,29 @@
 
 <style lang="scss">
 
-    @import url('https://fonts.googleapis.com/css?family=Poppins');
+    @import url('https://fonts.googleapis.com/css?family=Poppins:400,600,700');
 
     .header {
         display: flex;
-        padding-left: 50px;
-        padding-right: 41px;
 
         .header__logo {
 
             flex-basis: 70%;
 
             .header__logo__image {
-                height: 66px;
+                height: 40px;
+
+                @include desktop {
+                    height: 66px;
+                }
             }
 
         }
 
         .header__buttons {
             flex-basis: 30%;
-            display: flex;
+            display: inline-flex;
+            align-items: flex-start;
             justify-content: space-around;
 
             .header__buttons__button {
@@ -46,12 +49,25 @@
                 outline-color: white;
                 background-color: color(primary);
                 text-transform: uppercase;
-                letter-spacing: 1.6px;
                 font-family: 'Poppins', sans-serif;
-                font-weight: bold;
-                color: color(text-color);
+                font-weight: 600;
+                color: color(text-color-header);
                 cursor: pointer;
+
+                @include desktop {
+                    letter-spacing: 1.6px;
+                }
             }
+
+            @include desktop {
+                display: flex;
+                align-items: center;
+            }
+        }
+
+        @include desktop {
+            padding-left: 3.7%;
+            padding-right: 2.9%;
         }
     }
 
