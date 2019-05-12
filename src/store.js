@@ -12,7 +12,7 @@ export default new vuex.Store ({
     actions: {
         loadComments({commit}) {
             HTTP
-                .get()
+                .get("/comments")
                 .then(result => {
                     let comments = result.data
                     commit('SET_COMMENTS', comments)
@@ -23,7 +23,7 @@ export default new vuex.Store ({
         },
         loadSingleComment({commit}, commentId) {
             HTTP
-                .get(commentId)
+                .get("/comments/" + commentId)
                 .then(result => {
                     let comment = result.data
                     commit('SET_COMMENT', comment)
@@ -31,6 +31,17 @@ export default new vuex.Store ({
                 .catch(error => {
                     console.log(error)
                 })
+        },
+        addComment({commit}, newComment) {
+            console.log("comment: ", newComment)
+            // HTTP
+            //     .post("/comments", {created_at: Date.now(), title: newComment.title, body: newComment.body})
+            //     .then(result => {
+            //         console.log(result)
+            //     })
+            //     .catch(error => {
+            //         console.log(error)
+            //     })
         },
     },
     mutations: {

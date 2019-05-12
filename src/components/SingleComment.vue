@@ -6,6 +6,10 @@
                 <h1 class="main-text-container__title">{{ comment.title }}</h1>
                 <p class="main-text-container__body">{{ comment.body }}</p>
             </div>
+            <div class="buttons-holder">
+                <button type="button">Edit comment</button>
+                <button type="button">Delete comment</button>
+            </div>
             <div class="bottom-text-container">
                 <h2 class="bottom-text-container__text">Lorem Ipsum is text of the typesetting industry</h2>
                 <div class="bottom-text-container__button">

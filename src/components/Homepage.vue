@@ -11,10 +11,27 @@
         </div>
         <div class="write-comment" id="writeComment">
             <h2 class="write-comment__title">Write<br>comment<br><div class="write-comment__rectangle"></div></h2>
-            <form class="write-comment__form" method="post">
-                <input class="write-comment__form__input write-comment__form__input--thin" type="text" placeholder="Title">
-                <textarea class="write-comment__form__input write-comment__form__input--thick" type="text" placeholder="Your comment"></textarea>
-                <button class="write-comment__form__button" type="submit" name="button">Send</button>
+            <form class="write-comment__form" @submit="checkForm">
+                <p v-if="errors.length">
+                    <b>Please correct the following error(s):</b>
+                    <ul>
+                        <li v-for="error in errors">{{ error }}</li>
+                    </ul>
+                </p>
+                <p v-if="success">
+                    <b>Your comment was successfully added!</b>
+                </p>
+                <input
+                    class="write-comment__form__input write-comment__form__input--thin"
+                    type="text"
+                    placeholder="Title"
+                    v-model="title">
+                <textarea
+                    class="write-comment__form__input write-comment__form__input--thick"
+                    type="text"
+                    placeholder="Your comment"
+                    v-model="text"></textarea>
+                <button type="submit" class="write-comment__form__button">Send</button>
             </form>
         </div>
         <div class="divider-holder">
@@ -35,7 +52,36 @@
         },
         data() {
             return {
-                info: info
+                info: info,
+                title: null,
+                text: null,
+                errors: [],
+                success: false
+            }
+        },
+        methods: {
+            checkForm(e) {
+                e.preventDefault()
+                this.success = false
+                if (this.title && this.text) {
+                    let comment = {"title": this.title, "body": this.text}
+                    this.$store.dispatch('addComment', comment)
+                    this.title = null
+                    this.text = null
+                    this.errors = []
+                    this.success = true
+                    return true
+                }
+
+                this.errors = []
+
+                if (!this.title) {
+                    this.errors.push('Title required.')
+                }
+                if (!this.text) {
+                    this.errors.push('Text required.')
+                }
+
             }
         }
     }
@@ -141,13 +187,14 @@
                 border-radius: 3px;
                 margin-bottom: 16px;
                 box-sizing: border-box;
+                color: color(accent-green);
+                padding-left: 17px;
+                padding-top: 13px;
+                font-size: 1.1em;
             }
 
             ::placeholder {
                 margin: 0;
-                padding-left: 17px;
-                padding-top: 13px;
-                font-size: 1.2em;
                 color: color(accent-green);
             }
 
@@ -165,10 +212,12 @@
                 border: none;
                 border-radius: 3px;
                 background-color: color(accent-green);
+                outline-color: color(accent-green);
                 width: 100%;
                 height: 55px;
                 box-sizing: border-box;
                 font-size: 1em;
+                cursor: pointer;
 
                 @include desktop {
                     width: 150px;
