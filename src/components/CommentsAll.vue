@@ -38,8 +38,6 @@
 
 <style lang="scss">
     .all-comments-holder {
-        padding-left: 180px;
-        padding-right: 175px;
         margin-top: 85px;
         display: flex;
         flex-wrap: wrap;
@@ -49,6 +47,11 @@
 
         .all-comments-holder__container {
             flex-basis: 48%;
+
+            @include desktop {
+                padding-left: 180px;
+                padding-right: 175px;
+            }
         }
 
         @include desktop {

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Homepage from '@/components/Homepage'
 import CommentsAll from '@/components/CommentsAll'
+import SingleComment from '@/components/SingleComment'
 
 Vue.use(Router)
 
@@ -11,13 +12,15 @@ let router = new Router({
 	routes: [
 		{
 			path: '/',
-			name: 'home',
 			component: Homepage,
 		},
 		{
 			path: '/comments',
-			name: 'comments',
-			component: CommentsAll,
+			component: CommentsAll
+		},
+		{
+			path: '/comments/:id',
+			component: SingleComment
 		}
 	],
 	scrollBehavior: function (to) {
