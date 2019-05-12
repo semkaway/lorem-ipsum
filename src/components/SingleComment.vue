@@ -47,9 +47,7 @@
         data () {
             return {
                 edit: true,
-                errors: [],
-                title: null,
-                text: null
+                errors: []
             }
         },
         methods: {
@@ -62,8 +60,6 @@
                 if (this.comment.title && this.comment.body) {
                     let editComment = {"title": this.comment.title, "body": this.comment.body, "id": this.comment.id}
                     this.$store.dispatch('editComment', editComment)
-                    this.title = null
-                    this.text = null
                     this.errors = []
                     this.edit = true
                     return true
@@ -71,10 +67,10 @@
 
                 this.errors = []
 
-                if (!this.title) {
+                if (!this.comment.title) {
                     this.errors.push('Title required.')
                 }
-                if (!this.text) {
+                if (!this.comment.body) {
                     this.errors.push('Text required.')
                 }
 
