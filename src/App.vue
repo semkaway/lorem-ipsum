@@ -26,6 +26,10 @@ export default {
     body, html {
         height: 100%;
         scroll-behavior: smooth;
+
+        a {
+            text-decoration: none;
+        }
     }
 
     body {

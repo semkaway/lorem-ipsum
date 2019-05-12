@@ -6,7 +6,7 @@
             </router-link>
         </div>
         <div class="header__buttons" id="headerButtons">
-            <router-link    to="/#aboutUs"
+            <router-link    to="/#aboutUs" 
                             class="header__buttons__button"
                             :class="{ 'header__buttons__button--active': buttonBool[0].bool }"
                             @click.native="showOutline('button1')">about us</router-link>
@@ -47,7 +47,6 @@
             showOutline(buttonNumber) {
                 for (let i = 0; i < this.buttonBool.length; i++) {
                     if (this.buttonBool[i].name == buttonNumber) {
-                        console.log("yuyuy")
                         this.buttonBool[i].bool = true
                     } else {
                         this.buttonBool[i].bool = false
@@ -84,8 +83,8 @@
 
         .header__buttons {
             flex-basis: 30%;
-            display: inline-flex;
-            align-items: flex-start;
+            display: flex;
+            text-align: center;
             justify-content: space-around;
             box-sizing: border-box;
 
@@ -94,15 +93,16 @@
                 outline-color: white;
                 background-color: color(primary);
                 text-transform: uppercase;
-                font-family: 'Poppins', sans-serif;
                 font-weight: 600;
                 font-size: 0.8em;
-                text-decoration: none;
                 color: color(text-color-header);
                 cursor: pointer;
+                height: 50px;
+                box-sizing: border-box;
 
                 @include desktop {
                     letter-spacing: 1.6px;
+                    padding-top: 15px;
                 }
             }
 
